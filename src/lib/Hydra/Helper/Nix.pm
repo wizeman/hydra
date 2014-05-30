@@ -406,8 +406,8 @@ sub run {
 
 sub grab {
     my (%args) = @_;
-    my $res = run(%args, grabStderr => 0);
-    die "command `@{$args{cmd}}' failed with exit status $res->{status}" if $res->{status};
+    my $res = run(%args, grabStderr => 1);
+    die "command `@{$args{cmd}}' failed with exit status $res->{status}, output $res->{stdout}, errors $res->{stderr}" if $res->{status};
     return $res->{stdout};
 }
 
